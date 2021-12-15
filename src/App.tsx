@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Admin, Resource } from "react-admin";
 import PostIcon from "@material-ui/icons/AccountBox";
+import UserStoriesIcon from "@material-ui/icons/People";
 import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import HistoryIcon from "@material-ui/icons/History";
 import Dashboard from "./Dashboard";
@@ -25,6 +26,11 @@ import { HistoryEdit } from "./historyEdit";
 import { HistoryShow } from "./historyShow";
 import { HistoryList } from "./historyList";
 import { HistoryCreate } from "./historyCreate";
+
+import { UserStoriesEdit } from "./userStoriesEdit";
+import { UserStoriesShow } from "./userStoriesShow";
+import { UserStoriesList } from "./userStoriesList";
+import { UserStoriesCreate } from "./userStoriesCreate";
 
 const myClientWithAuth = new ApolloClient({
   uri: "https://bacalar-thesis.hasura.app/v1/graphql",
@@ -89,6 +95,15 @@ const App = () => {
         edit={HistoryEdit}
         create={HistoryCreate}
         icon={HistoryIcon}
+      />
+      <Resource
+        name="UserStories"
+        options={{ label: "User Stories" }}
+        show={UserStoriesShow}
+        list={UserStoriesList}
+        edit={UserStoriesEdit}
+        create={UserStoriesCreate}
+        icon={UserStoriesIcon}
       />
     </Admin>
   );
